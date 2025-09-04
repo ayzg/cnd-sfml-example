@@ -1,0 +1,37 @@
+proc @MyApp:{
+ ` Add the dependency using the import keyword. specify this is an external c++ library.
+ cxx import lib "Sfml::Window";
+ cxx import lib "Sfml::Graphics";
+  
+ ` Include the header files.
+ cxx include "SFML/Window.hpp";
+ cxx include "SFML/Graphics.hpp";
+ 
+ ` Alias types to reduce noise.
+ using sfRenderWindow = cxx{sf::RenderWindow};
+ using sfVideoMode = cxx{sf::VideoMode};
+ using sfEvent = cxx{sf::Event};
+ using sfColor = cxx{sf::Color};
+ 
+ fn@main:{
+	def sfRenderWindow @window(sfVideoMode(800,600),"My Window"); 
+	
+    while (window.isOpen())
+    {
+        def sfEvent @event;
+        while (window.pollEvent(event)) {
+            if (event.type == sfEvent::Closed)
+                window.close();
+        }
+
+        window.clear(sfColor::Black);
+
+        ` draw everything here...
+        ` window.draw(...);
+
+        window.display();
+    }
+
+    return 0; 
+ }
+}
