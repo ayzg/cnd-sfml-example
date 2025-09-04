@@ -1,2 +1,3 @@
 # Binary output of C& to C++ Transpiler (MSVC)
 Including the binary output with the debug symbols of the compilation for later analysis.
+Postfix `-mask` is added to the `.ilk` and `.pdb` to pass `.gitignore`.
